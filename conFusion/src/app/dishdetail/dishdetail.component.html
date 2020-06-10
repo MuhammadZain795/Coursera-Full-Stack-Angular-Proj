@@ -1,0 +1,51 @@
+<div class="container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0">
+
+  <div fxFlex="40">
+    <div fxFlex *ngIf="dish">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <h3>{{dish.name | uppercase}}</h3>
+          </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+        <mat-card-content>
+          <p>{{dish.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxFlex="40">
+    <div fxFlex *ngIf="dish">
+      <h2>Comments</h2><hr>
+      <mat-list><small>{{dish.comments[0].comment}}</small></mat-list>
+      <mat-list><small>{{dish.comments[0].rating}}</small></mat-list>
+      <mat-list><small>--{{dish.comments[0].author}}{{dish.comments[0].date | date}}</small></mat-list>
+      <mat-list><small>{{dish.comments[1].comment}}</small></mat-list>
+      <mat-list><small>{{dish.comments[1].rating}}</small></mat-list>
+      <mat-list><small>--{{dish.comments[1].author}}{{dish.comments[1].date | date}}</small></mat-list>
+      <mat-list><small>{{dish.comments[2].comment}}</small></mat-list>
+      <mat-list><small>{{dish.comments[2].rating}}</small></mat-list>
+      <mat-list><small>--{{dish.comments[2].author}}{{dish.comments[2].date | date}}</small></mat-list>
+      <mat-list><small>{{dish.comments[3].comment}}</small></mat-list>
+      <mat-list><small>{{dish.comments[3].rating}}</small></mat-list>
+      <mat-list><small>--{{dish.comments[3].author}}{{dish.comments[3].date | date}}</small></mat-list>
+      <mat-list><small>{{dish.comments[4].comment}}</small></mat-list>
+      <mat-list><small>{{dish.comments[4].rating}}</small></mat-list>
+      <mat-list><small>--{{dish.comments[4].author}}{{dish.comments[4].date | date}}</small></mat-list>
+    </div>
+  </div>
+
+</div>
