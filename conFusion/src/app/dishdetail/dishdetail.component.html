@@ -28,24 +28,16 @@
   </div>
 
   <div fxFlex="40">
-    <div fxFlex *ngIf="dish">
-      <h2>Comments</h2><hr>
-      <mat-list><small>{{dish.comments[0].comment}}</small></mat-list>
-      <mat-list><small>{{dish.comments[0].rating}}</small></mat-list>
-      <mat-list><small>--{{dish.comments[0].author}}{{dish.comments[0].date | date}}</small></mat-list>
-      <mat-list><small>{{dish.comments[1].comment}}</small></mat-list>
-      <mat-list><small>{{dish.comments[1].rating}}</small></mat-list>
-      <mat-list><small>--{{dish.comments[1].author}}{{dish.comments[1].date | date}}</small></mat-list>
-      <mat-list><small>{{dish.comments[2].comment}}</small></mat-list>
-      <mat-list><small>{{dish.comments[2].rating}}</small></mat-list>
-      <mat-list><small>--{{dish.comments[2].author}}{{dish.comments[2].date | date}}</small></mat-list>
-      <mat-list><small>{{dish.comments[3].comment}}</small></mat-list>
-      <mat-list><small>{{dish.comments[3].rating}}</small></mat-list>
-      <mat-list><small>--{{dish.comments[3].author}}{{dish.comments[3].date | date}}</small></mat-list>
-      <mat-list><small>{{dish.comments[4].comment}}</small></mat-list>
-      <mat-list><small>{{dish.comments[4].rating}}</small></mat-list>
-      <mat-list><small>--{{dish.comments[4].author}}{{dish.comments[4].date | date}}</small></mat-list>
-    </div>
+    <mat-list *ngIf="dish">
+      <h3>Comments</h3>
+      <mat-list-item *ngFor="let comment of dish.comments">
+        <h4 mat-line>{{comment.comment}}</h4>
+        <p mat-line>{{comment.rating}} Star</p>
+        <p mat-line>
+          <span>--{{comment.author}}{{comment.date | date}}</span>
+        </p>
+      </mat-list-item>
+    </mat-list>
   </div>
 
 </div>
