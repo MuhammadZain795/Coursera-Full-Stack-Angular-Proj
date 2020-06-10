@@ -1,0 +1,24 @@
+{
+  "name": "coursera-full-stack-angular-proj",
+  "version": "1.0.0",
+  "description": "angular project",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run lite",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lite": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuhammadZain795/Coursera-Full-Stack-Angular-Proj.git"
+  },
+  "author": "zain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuhammadZain795/Coursera-Full-Stack-Angular-Proj/issues"
+  },
+  "homepage": "https://github.com/MuhammadZain795/Coursera-Full-Stack-Angular-Proj#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
