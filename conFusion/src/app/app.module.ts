@@ -20,16 +20,20 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { Leader } from './shared/leader';
+import { LoginComponent } from './login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     DishdetailComponent,
     HeaderComponent,
+    MatDialogModule,
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,9 @@ import { Leader } from './shared/leader';
     MatCardModule,
     MatButtonModule
   ],
+  entryComponents: [
+    LoginComponent
+],
   providers: [DishService, LeaderService],
   bootstrap: [AppComponent]
 })
