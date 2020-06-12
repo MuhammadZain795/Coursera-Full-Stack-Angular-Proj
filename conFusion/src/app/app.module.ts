@@ -19,7 +19,6 @@ import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
-import { LoginComponent } from './login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
@@ -27,12 +26,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MenuComponent,
     DishdetailComponent,
     HeaderComponent,
-    MatDialogModule,
     FooterComponent,
     AboutComponent,
     HomeComponent,
-    ContactComponent,
-    LoginComponent
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -42,12 +39,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     FlexLayoutModule,
     MatGridListModule,
     AppRoutingModule,
+    MatDialogModule,
     MatCardModule,
     MatButtonModule
   ],
-  entryComponents: [
-    LoginComponent
-],
   providers: [DishService, LeaderService],
   bootstrap: [AppComponent]
 })
