@@ -21,6 +21,10 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,10 +44,14 @@ import { LoginComponent } from './login/login.component';
     MatListModule,
     FlexLayoutModule,
     MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule,
     AppRoutingModule,
     MatDialogModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   entryComponents: [
     LoginComponent
