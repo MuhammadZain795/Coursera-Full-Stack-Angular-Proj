@@ -6,12 +6,23 @@ import { DishService } from '../services/dish.service';
 import { switchMap } from 'rxjs/operators';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {MatSliderModule} from '@angular/material/slider'
+import {MatSliderModule} from '@angular/material/slider';
+import { visibility } from '../animations/app.animation';
+import { flyInOut, expand } from '../animations/app.animation';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+    },
+    animations: [
+      flyInOut(),
+      visibility(),
+      expand()
+    ]
 })
 export class DishdetailComponent implements OnInit {
   dishIds: string[];
@@ -28,7 +39,7 @@ export class DishdetailComponent implements OnInit {
     'rating': 5,
     'comment': ''
   };
-
+  visibility = 'shown';
   validationMessages = {
     'author': {
       'required':      'Author Name is required.',
@@ -53,9 +64,9 @@ export class DishdetailComponent implements OnInit {
 
   ngOnInit() {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
-    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-    .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
-    errmess => this.errMess = <any>errmess);
+    this.route.params.pipe(switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishservice.getDish(+params['id']); }))
+    .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); this.visibility = 'shown'; },
+      errmess => this.errMess = <any>errmess);
   }
 
   createForm(): void {
