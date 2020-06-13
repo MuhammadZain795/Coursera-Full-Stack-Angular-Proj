@@ -67,12 +67,14 @@ import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
     MatCardModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserModule,
+    HttpClientModule
   ],
   entryComponents: [
     LoginComponent
 ],
   providers: [DishService, LeaderService, PromotionService, ProcessHTTPMsgService, {provide: 'BaseURL', useValue: baseURL}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
