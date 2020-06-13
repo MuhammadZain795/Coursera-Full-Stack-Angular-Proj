@@ -33,6 +33,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSliderModule} from '@angular/material/slider';
 import { baseURL } from './shared/baseurl';
+import {ProcessHTTPMsgService} from './services/process-httpmsg.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,7 @@ import { baseURL } from './shared/baseurl';
   entryComponents: [
     LoginComponent
 ],
-  providers: [DishService, LeaderService, PromotionService, {provide: 'BaseURL', useValue: baseURL}],
+  providers: [DishService, LeaderService, PromotionService, ProcessHTTPMsgService, {provide: 'BaseURL', useValue: baseURL}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
