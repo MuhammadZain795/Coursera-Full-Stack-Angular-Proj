@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
+import { visibility,flyInOut,expand } from '../animations/app.animation';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -11,7 +12,9 @@ import { flyInOut } from '../animations/app.animation';
     'style': 'display: block;'
     },
     animations: [
-      flyInOut()
+      visibility(),
+      flyInOut(),
+      expand()
     ]
 })
 export class ContactComponent implements OnInit {
@@ -48,6 +51,9 @@ export class ContactComponent implements OnInit {
       'email':         'Email not in valid format.'
     },
   };
+  spinnerVisibility: boolean;
+  visibility: string;
+  feedbackservice: any;
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -93,18 +99,33 @@ export class ContactComponent implements OnInit {
       }
     }
   }
-  onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+  onSubmit(feedbackForm1: NgForm){
+    this.feedback=this.feedbackForm.value;
+    this.spinnerVisibility = true;
+    this.visibility ='hidden';
+    console.log(this.feedbackForm.value);
+    this.feedbackservice.sendFeedback(this.feedback)
+    .subscribe(feed =>
+      { setTimeout(() =>
+        {
+          this.feedback = feed; this.spinnerVisibility = false;
+          this.visibility='shown'
+          setTimeout(() => this.feedback = null, 5000);
+        }
+        , 2000);
+      }
+    );
+
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
-      telnum: '',
+      telnum: 0,
       email: '',
       agree: false,
       contacttype: 'None',
-      message: ''
+      message: '',
     });
     this.feedbackFormDirective.resetForm();
   }
+
 }
